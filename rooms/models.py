@@ -38,6 +38,12 @@ class Room(CommonModel):
         "Amenity",
         related_name="rooms",
     )
+    category = models.ForeignKey(
+        "categories.Category",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )
 
     def __str__(self):
         return f"{self.country} {self.city}에 있는 {self.name}"

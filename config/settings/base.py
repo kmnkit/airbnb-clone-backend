@@ -38,11 +38,13 @@ DJANGO_APPS = [
 ]
 
 PROJECT_APPS = [
+    "categories",
     "common",
     "experiences",
     "houses",
-    "users",
+    "reviews",
     "rooms",
+    "users",
 ]
 
 THIRD_PARTY_APPS = [
