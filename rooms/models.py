@@ -1,6 +1,7 @@
 from common.models import CommonModel
 from django.db import models
 from django.conf import settings
+from django_countries.fields import CountryField
 
 
 class Room(CommonModel):
@@ -9,10 +10,8 @@ class Room(CommonModel):
         PRIVATE_ROOM = "private_room", "Private Room"
         SHARED_ROOM = "shared_room", "Shared Room"
 
-    country = models.CharField(
-        max_length=50,
-        default="한국",
-    )
+    name = models.CharField(max_length=180, default="")
+    country = CountryField()
     city = models.CharField(
         max_length=80,
         default="서울",
@@ -40,9 +39,27 @@ class Room(CommonModel):
         related_name="rooms",
     )
 
+    def __str__(self):
+        return f"{self.country} {self.city}에 있는 {self.name}"
+
+    class Meta:
+        verbose_name = "방"
+        verbose_name_plural = "방들"
+
 
 class Amenity(CommonModel):
     """Amenity Definition"""
 
     name = models.CharField(max_length=50)
-    description = models.CharField(max_length=150, null=True)
+    description = models.CharField(
+        max_length=150,
+        null=True,
+        blank=True,
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "어메니티"
+        verbose_name_plural = "어메니티들"
