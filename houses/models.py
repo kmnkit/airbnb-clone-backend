@@ -10,7 +10,9 @@ class House(models.Model):
     pets_allowed = models.BooleanField(
         "애완동물 가능", default=True, help_text="이 집이 애완동물을 허가하는가?"
     )
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="houses", on_delete=models.CASCADE)
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL, related_name="houses", on_delete=models.CASCADE
+    )
 
     def __str__(self):
         return self.name

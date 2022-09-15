@@ -20,7 +20,10 @@ def get_secret(setting, secrets=secrets):
         error_msg = "Set the {0} environment variable".format(setting)
         raise ImproperlyConfigured(error_msg)
 
-SECRET_KEY = get_secret("DJANGO_SECRET_KEY")  # "django-insecure-1en&u2o!^i#_xmbuv17h5@yb47g22_!!v*v6itm0wcw467=+2f"
+
+SECRET_KEY = get_secret(
+    "DJANGO_SECRET_KEY"
+)  # "django-insecure-1en&u2o!^i#_xmbuv17h5@yb47g22_!!v*v6itm0wcw467=+2f"
 # SECURITY WARNING: don't run with debug turned on in production!
 
 # Application definition
@@ -34,9 +37,17 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-PROJECT_APPS = ['houses', 'users']
+PROJECT_APPS = [
+    "common",
+    "houses",
+    "users",
+    "rooms",    
+]
 
-THIRD_PARTY_APPS = ["rest_framework", ]
+THIRD_PARTY_APPS = [
+    "django_countries",
+    "rest_framework",
+]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
 

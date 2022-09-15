@@ -13,6 +13,8 @@ Django = "^4.1.1"
 djangorestframework = "^3.13.1"
 black = "^22.8.0"
 flake8 = "^5.0.4"
+Pillow = "^9.2.0"
+django-countries = "^7.3.2"
 
 
 [build-system]
